@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Abhinaba Ghosh – General Physician, Kolkata</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #0a2342;
+    --blue: #1a5fb4;
+    --blue-light: #e8f1fb;
+    --teal: #0d9488;
+    --teal-light: #ccfbf1;
+    --white: #ffffff;
+    --gray: #f4f6fb;
+    --text: #1a2332;
+    --muted: #64748b;
+    --border: #e2e8f0;
+    --accent: #f0a500;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.97); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+  }
+  .logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--navy); font-weight: 700; }
+  .logo span { color: var(--blue); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--muted); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--blue); }
+  .nav-cta {
+    background: var(--blue); color: #fff; border: none; padding: 10px 24px;
+    border-radius: 50px; font-size: 0.9rem; font-weight: 500; cursor: pointer;
+    text-decoration: none; transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--navy); }
+
+  /* HERO */
+  .hero {
+    min-height: 70vh;
+    background: linear-gradient(135deg, var(--navy) 0%, #1a3a6e 60%, #1a5fb4 100%);
+    display: flex; align-items: center;
+    padding: 100px 10% 0px;
+    justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -100px; right: -100px;
+    width: 600px; height: 600px; border-radius: 50%;
+    justify-content: center;
+    background: rgba(255,255,255,0.04);
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: -150px; left: 30%;
+    width: 400px; height: 400px; border-radius: 50%;
+    justify-content: center;
+    background: rgba(255,255,255,0.03);
+  }
+  .hero-content { flex: 1; max-width: 560px; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50px; padding: 6px 16px; margin-bottom: 1.5rem;
+    color: #a0c4ff; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.04em;
+  }
+  .hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #4ade80; }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    color: #fff; line-height: 1.2; margin-bottom: 1rem;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero-sub { color: rgba(255,255,255,0.75); font-size: 1.05rem; line-height: 1.7; margin-bottom: 2rem; }
+  .hero-stats { display: flex; gap: 2rem; margin-bottom: 2.5rem; }
+  .stat { text-align: center; }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--accent); font-weight: 700; }
+  .stat-label { font-size: 0.75rem; color: rgba(255,255,255,0.65); margin-top: 2px; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--accent); color: var(--navy); padding: 14px 32px;
+    border-radius: 50px; font-weight: 600; font-size: 0.95rem;
+    text-decoration: none; transition: all 0.2s; display: inline-block;
+  }
+  .btn-primary:hover { background: #e09400; transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent; color: #fff; padding: 14px 32px;
+    border-radius: 50px; font-weight: 500; font-size: 0.95rem;
+    text-decoration: none; border: 1.5px solid rgba(255,255,255,0.4);
+    transition: all 0.2s; display: inline-block;
+  }
+  .btn-outline:hover { background: rgba(255,255,255,0.1); }
+  .hero-image-wrap {
+    flex: 1; display: flex; justify-content: center; align-items: flex-end;
+    z-index: 0; max-width: none; height: 100%;
+  }
+  .hero-img-placeholder {
+    width: 750px; height: auto;
+    background: rgba(255,255,255,0.08);
+    border-radius: 24px 24px 24px 24px;
+    border: 1px solid rgba(255,255,255,0.15);
+    display: flex; flex-direction: column; align-items: flex-end; justify-content: center;
+    gap: 5px;
+  }
+  .hero-img-placeholder img {
+  width: 90%;
+  height: 90%;
+  object-fit: cover;
+}
+  .hero-img-placeholder svg { opacity: 0.4; }
+  .hero-img-placeholder p { color: rgba(255,255,255,0.4); font-size: 0.82rem; }
+
+  /* APPOINTMENT STRIP */
+  .appt-strip {
+    background: var(--white);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+    padding: 0 5%;
+  }
+  .appt-inner {
+    display: flex; align-items: center; gap: 1px;
+    border-radius: 0; overflow: hidden;
+  }
+  .appt-field {
+    flex: 1; padding: 1.4rem 1.5rem; border-right: 1px solid var(--border);
+  }
+  .appt-field label { display: block; font-size: 0.72rem; font-weight: 600; color: var(--blue); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 4px; }
+  .appt-field input, .appt-field select {
+    width: 100%; border: none; outline: none; font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem; color: var(--text); background: transparent; cursor: pointer;
+  }
+  .appt-btn {
+    background: var(--blue); color: #fff; border: none;
+    padding: 1.4rem 2.5rem; font-size: 1rem; font-weight: 600;
+    cursor: pointer; font-family: 'DM Sans', sans-serif;
+    white-space: nowrap; transition: background 0.2s;
+  }
+  .appt-btn:hover { background: var(--navy); }
+
+  /* SECTIONS */
+  section { padding: 80px 5%; }
+  .section-tag {
+    display: inline-block; background: var(--blue-light); color: var(--blue);
+    padding: 4px 14px; border-radius: 50px; font-size: 0.78rem; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.8rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    color: var(--navy); margin-bottom: 1rem;
+  }
+  .section-sub { color: var(--muted); font-size: 1rem; line-height: 1.7; max-width: 560px; }
+
+  /* SERVICES */
+  .services-bg { background: var(--gray); }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .service-card {
+    background: var(--white); border-radius: 16px; padding: 2rem;
+    border: 1px solid var(--border); transition: all 0.25s;
+    position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: var(--blue); transform: scaleX(0); transition: transform 0.3s;
+    transform-origin: left;
+  }
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(26,95,180,0.12); }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-icon {
+    width: 52px; height: 52px; background: var(--blue-light);
+    border-radius: 12px; display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.2rem;
+  }
+  .service-icon svg { width: 26px; height: 26px; }
+  .service-card h3 { font-size: 1.05rem; font-weight: 600; color: var(--navy); margin-bottom: 0.5rem; }
+  .service-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+
+  /* ABOUT */
+  .about-wrap { display: flex; gap: 12rem; align-items: center; padding: 0 45px; justify-content: center; }
+  .about-img {
+    flex: 1; min-width: 100px;
+    border-radius: 24px;
+    height: 580px;
+    max-width: 380px;
+    position: relative; overflow: hidden;
+  }
+  .about-img-badge {
+    position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+    background: var(--white); border-radius: 12px; padding: 12px 20px;
+    display: flex; align-items: center; gap: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    white-space: nowrap;
+  }
+  .badge-star { color: var(--accent); font-size: 1rem; }
+  .badge-text { font-size: 0.85rem; font-weight: 600; color: var(--navy); }
+  .badge-sub { font-size: 0.75rem; color: var(--muted); }
+  .about-content { flex: 1; max-width: 700px;}
+  .about-content p { color: var(--muted); line-height: 1.8; margin-bottom: 1.2rem; font-size: 0.97rem; }
+  .about-highlights { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0; }
+  .highlight {
+    background: var(--gray); border-radius: 12px; padding: 1rem 1.2rem;
+    border-left: 3px solid var(--blue);
+  }
+  .highlight strong { display: block; color: var(--navy); font-size: 0.95rem; margin-bottom: 2px; }
+  .highlight span { color: var(--muted); font-size: 0.82rem; }
+
+  /* REVIEWS */
+  .reviews-bg { background: var(--gray); }
+  .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .review-card {
+    background: var(--white); border-radius: 16px; padding: 1.8rem;
+    border: 1px solid var(--border);
+  }
+  .stars { color: var(--accent); font-size: 1rem; margin-bottom: 1rem; letter-spacing: 2px; }
+  .review-text { color: var(--text); font-size: 0.93rem; line-height: 1.7; margin-bottom: 1.2rem; font-style: italic; }
+  .reviewer { display: flex; align-items: center; gap: 10px; }
+  .reviewer-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--blue); color: #fff; display: flex; align-items: center;
+    justify-content: center; font-size: 0.78rem; font-weight: 600;
+  }
+  .reviewer-name { font-size: 0.88rem; font-weight: 600; color: var(--navy); }
+  .reviewer-tag { font-size: 0.75rem; color: var(--muted); }
+
+  /* APPOINTMENT FORM */
+  .appt-section { background: var(--navy); }
+  .appt-section .section-title { color: #fff; }
+  .appt-section .section-sub { color: rgba(255,255,255,0.65); }
+  .appt-section .section-tag { background: rgba(255,255,255,0.1); color: #a0c4ff; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-top: 2.5rem; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group.full { grid-column: 1 / -1; }
+  .form-group label { font-size: 0.8rem; font-weight: 500; color: rgba(255,255,255,0.7); letter-spacing: 0.03em; }
+  .form-group input, .form-group select, .form-group textarea {
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 10px; padding: 12px 16px; color: #fff;
+    font-family: 'DM Sans', sans-serif; font-size: 0.93rem;
+    outline: none; transition: border-color 0.2s;
+  }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.35); }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: rgba(255,255,255,0.4); }
+  .form-group select option { background: var(--navy); color: #fff; }
+  .form-submit {
+    margin-top: 1.5rem; background: #25D366; color: #fff; border: none;
+    padding: 15px 40px; border-radius: 50px; font-size: 1rem; font-weight: 600;
+    cursor: pointer; display: inline-flex; align-items: center; gap: 10px;
+    font-family: 'DM Sans', sans-serif; transition: background 0.2s;
+  }
+  .form-submit:hover { background: #1aad52; }
+  .whatsapp-note { font-size: 0.78rem; color: rgba(255,255,255,0.45); margin-top: 0.8rem; }
+
+  /* MAP */
+  .map-section { padding: 0; }
+  .map-wrap { display: flex; }
+  .map-info {
+    background: var(--navy); color: #fff;
+    padding: 4rem 5rem 4rem 5%;
+    flex: 0 0 380px; display: flex; flex-direction: column; justify-content: center; gap: 1.5rem;
+  }
+  .map-info h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #fff; margin-bottom: 0.5rem; }
+  .map-detail { display: flex; gap: 12px; align-items: flex-start; }
+  .map-detail svg { flex-shrink: 0; margin-top: 3px; }
+  .map-detail p { font-size: 0.9rem; color: rgba(255,255,255,0.75); line-height: 1.6; }
+  .map-detail strong { color: #fff; display: block; font-size: 0.78rem; letter-spacing: 0.05em; margin-bottom: 2px; }
+  iframe { flex: 1; height: 420px; border: none; }
+
+  /* FOOTER */
+  footer {
+    background: #05111f; color: rgba(255,255,255,0.5);
+    text-align: center; padding: 2rem 5%;
+    font-size: 0.82rem;
+  }
+  footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
+
+  @media (max-width: 768px) {
+    .hero { flex-direction: column; padding-top: 100px; }
+    .hero-image-wrap { display: none; }
+    .about-wrap { flex-direction: column; }
+    .appt-inner { flex-direction: column; }
+    .appt-field { border-right: none; border-bottom: 1px solid var(--border); }
+    .appt-btn { width: 100%; }
+    .form-grid { grid-template-columns: 1fr; }
+    .map-wrap { flex-direction: column; }
+    .map-info { flex: none; padding: 3rem 5%; }
+    .nav-links { display: none; }
+    .about-highlights { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Dr. <span>Abhinaba</span> Ghosh</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#appointment" class="nav-cta">Book Appointment</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">Available Today · Closes 9:30 PM</div>
+    <h1>Compassionate Care,<br>Expert <span>Medical</span> Guidance</h1>
+    <p class="hero-sub">Dr. Abhinaba Ghosh is a trusted General Physician based in Newtown, Kolkata — known for his thorough diagnosis, patient-first approach, and proactive treatment.</p>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">123+</div><div class="stat-label">Happy Patients</div></div>
+      <div class="stat"><div class="stat-num">4.9★</div><div class="stat-label">Google Rating</div></div>
+      <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Years Experience</div></div>
+    </div>
+    <div class="hero-btns">
+      <a href="#appointment" class="btn-primary">Book an Appointment</a>
+      <a href="tel:+918660496425" class="btn-outline">Call Now</a>
+    </div>
+  </div>
+  <div class="hero-image-wrap">
+    <div class="hero-img-placeholder" style="background:none;border:none;padding:0;overflow:hidden;border-radius:24px 24px 0 0;">
+    <img src="no bg.png"  />
+    </div>
+  </div>
+</section>
+
+<!-- QUICK APPOINTMENT STRIP -->
+<div class="appt-strip">
+  <div class="appt-inner">
+    <div class="appt-field">
+      <label>Date</label>
+      <input type="date" id="strip-date">
+    </div>
+    <div class="appt-field">
+      <label>Location</label>
+      <input type="text" value="Newtown, Kolkata" readonly>
+    </div>
+    <div class="appt-field">
+      <label>Service</label>
+      <select>
+        <option>General Consultation</option>
+        <option>Follow-up Visit</option>
+        <option>Health Check-up</option>
+        <option>Prescription Renewal</option>
+      </select>
+    </div>
+    <button class="appt-btn" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Book Appointment →</button>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services-bg" id="services">
+  <div style="text-align:center; margin-bottom: 0;">
+    <span class="section-tag">What We Offer</span>
+    <h2 class="section-title" style="margin-top: 0.5rem;">Our Medical Services</h2>
+    <p class="section-sub" style="margin: 0 auto;">Comprehensive primary care and specialist consultations under one roof.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 26 26" fill="none" stroke="#1a5fb4" stroke-width="1.8">
+          <path d="M13 3C7.5 3 3 7.5 3 13s4.5 10 10 10 10-4.5 10-10S18.5 3 13 3z"/>
+          <path d="M13 8v5l3 3" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3>General Consultation</h3>
+      <p>Diagnosis and treatment for fever, infections, chronic illnesses, and day-to-day health concerns.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 26 26" fill="none" stroke="#1a5fb4" stroke-width="1.8">
+          <path d="M13 3v4M13 19v4M3 13h4M19 13h4"/>
+          <circle cx="13" cy="13" r="5"/>
+        </svg>
+      </div>
+      <h3>Health Check-up</h3>
+      <p>Preventive health screenings, blood tests, and annual check-up packages for all age groups.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 26 26" fill="none" stroke="#1a5fb4" stroke-width="1.8">
+          <rect x="4" y="4" width="18" height="18" rx="3"/>
+          <path d="M9 13h8M13 9v8" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3>Prescription & Follow-up</h3>
+      <p>Medication management and regular follow-ups to monitor ongoing treatments effectively.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 26 26" fill="none" stroke="#1a5fb4" stroke-width="1.8">
+          <path d="M5 13C5 8.6 8.6 5 13 5s8 3.6 8 8-3.6 8-8 8"/>
+          <path d="M8 16c1-2 3-3 5-3s4 1 5 3" stroke-linecap="round"/>
+          <circle cx="13" cy="11" r="2"/>
+        </svg>
+      </div>
+      <h3>Paediatric Care</h3>
+      <p>Child health consultations, vaccinations, and growth monitoring for infants to teenagers.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 26 26" fill="none" stroke="#1a5fb4" stroke-width="1.8">
+          <path d="M13 3c-3.3 0-6 2.7-6 6 0 4.5 6 14 6 14s6-9.5 6-14c0-3.3-2.7-6-6-6z"/>
+          <circle cx="13" cy="9" r="2"/>
+        </svg>
+      </div>
+      <h3>Chronic Disease Mgmt</h3>
+      <p>Long-term management of diabetes, hypertension, thyroid disorders, and related conditions.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 26 26" fill="none" stroke="#1a5fb4" stroke-width="1.8">
+          <path d="M4 20L10 14M16 8l6-6M10 14l2-6 4 4-6 2zM16 8l-2 6"/>
+        </svg>
+      </div>
+      <h3>Minor Procedures</h3>
+      <p>Wound dressing, sutures, and minor clinical procedures handled with precision and care.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-wrap">
+    <div class="about-img">
+      <img src="download (1).png" />
+      <div class="about-img-badge">
+        <span class="badge-star">★★★★★</span>
+        <div>
+          <div class="badge-text">4.9 / 5.0</div>
+          <div class="badge-sub">123 Google Reviews</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-content">
+      <span class="section-tag">About the Doctor</span>
+      <h2 class="section-title">Dr. Abhinaba Ghosh</h2>
+      <p>Dr. Abhinaba Ghosh is a highly regarded General Physician practicing at Galaxy Medicine, Newtown, Kolkata. With a strong foundation in internal medicine and a patient-first philosophy, he is known for his thorough clinical assessments and clear, honest communication.</p>
+      <p>His proactive approach to diagnosis — addressing not just immediate complaints but underlying health patterns — has made him a trusted name for families across Newtown and surrounding areas.</p>
+      <div class="about-highlights">
+        <div class="highlight"><strong>Galaxy Medicine</strong><span>Dash Drone P.O, Newtown</span></div>
+        <div class="highlight"><strong>Timings</strong><span>Open · Closes 9:30 PM</span></div>
+        <div class="highlight"><strong>Speciality</strong><span>General Physician (MBBS)</span></div>
+        <div class="highlight"><strong>Contact</strong><span>086604 96425</span></div>
+      </div>
+      <a href="https://www.google.com/maps/place/Dr.+Abhinaba+Ghosh/@22.6287479,88.4457421,17z" target="_blank" class="btn-primary" style="font-size:0.88rem; padding: 10px 24px;">View on Google Maps</a>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews-bg" id="reviews">
+  <div style="text-align:center;">
+    <span class="section-tag">Patient Feedback</span>
+    <h2 class="section-title">What Patients Say</h2>
+    <p class="section-sub" style="margin: 0 auto;">Real experiences from real patients on Google.</p>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Best doctor and professional approach and diagnosis is very well. Highly recommended."</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">R</div>
+        <div>
+          <div class="reviewer-name">Rahul S.</div>
+          <div class="reviewer-tag">Google Review</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Very helpful and proactive on topics which require immediate attention. I highly recommend Dr. Abhinaba Ghosh. He follows up with results every year."</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">A</div>
+        <div>
+          <div class="reviewer-name">Ananya M.</div>
+          <div class="reviewer-tag">Google Review</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"His medicines and treatment really helped to cure better. Would really recommend him to everyone."</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">M</div>
+        <div>
+          <div class="reviewer-name">Mousumi D.</div>
+          <div class="reviewer-tag">Google Review</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPOINTMENT FORM -->
+<section class="appt-section" id="appointment">
+  <span class="section-tag">Book a Visit</span>
+  <h2 class="section-title">Request an Appointment</h2>
+  <p class="section-sub">Fill in your details and we'll confirm via WhatsApp within a few minutes.</p>
+  <div class="form-grid">
+    <div class="form-group">
+      <label>Full Name *</label>
+      <input type="text" id="fname" placeholder="Your full name">
+    </div>
+    <div class="form-group">
+      <label>Phone Number *</label>
+      <input type="tel" id="phone" placeholder="+91 XXXXX XXXXX">
+    </div>
+    <div class="form-group">
+      <label>Preferred Date *</label>
+      <input type="date" id="appt-date">
+    </div>
+    <div class="form-group">
+      <label>Preferred Time</label>
+      <select id="appt-time">
+        <option value="">Select time slot</option>
+        <option>Morning (10:00 AM – 12:00 PM)</option>
+        <option>Afternoon (2:00 PM – 5:00 PM)</option>
+        <option>Evening (6:00 PM – 9:00 PM)</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Reason for Visit</label>
+      <select id="reason">
+        <option value="">Select service</option>
+        <option>General Consultation</option>
+        <option>Follow-up Visit</option>
+        <option>Health Check-up</option>
+        <option>Prescription Renewal</option>
+        <option>Paediatric Care</option>
+        <option>Chronic Disease Management</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Age</label>
+      <input type="number" id="age" placeholder="Patient's age">
+    </div>
+    <div class="form-group full">
+      <label>Additional Notes</label>
+      <textarea id="notes" rows="3" placeholder="Describe your symptoms or any specific concerns..."></textarea>
+    </div>
+  </div>
+  <button class="form-submit" onclick="sendToWhatsApp()">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5L9 7.8C8.8 7.2 8.5 7 8.2 7H7.5C7.2 7 6.7 7.1 6.3 7.6 6 8 5 9 5 11c0 2.1 1.5 4.1 1.7 4.4.2.3 3 4.6 7.3 6.4 1 .4 1.8.7 2.4.9.9.3 1.8.2 2.4.1.7-.1 2.2-.9 2.5-1.8.3-.9.3-1.7.2-1.8l-.1-.8z"/>
+      <path d="M12 0C5.4 0 0 5.4 0 12c0 2.1.5 4.1 1.5 5.9L0 24l6.3-1.6C8.1 23.4 10 24 12 24c6.6 0 12-5.4 12-12S18.6 0 12 0zm0 22c-1.9 0-3.7-.5-5.3-1.4l-.4-.2-3.7.9.9-3.6-.2-.4C2.5 15.7 2 13.9 2 12 2 6.5 6.5 2 12 2s10 4.5 10 10-4.5 10-10 10z"/>
+    </svg>
+    Send via WhatsApp
+  </button>
+  <p class="whatsapp-note">Your message will open in WhatsApp. Tap Send to confirm your request.</p>
+</section>
+
+<!-- MAP & CONTACT -->
+<div class="map-section" id="contact">
+  <div class="map-wrap">
+    <div class="map-info">
+      <h2>Find the Clinic</h2>
+      <div class="map-detail">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a0c4ff" stroke-width="1.8"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.3 7 13 7 13s7-7.7 7-13c0-3.9-3.1-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        <div>
+          <strong>Address</strong>
+          <p>Galaxy Medicine, Dash Drone P.O, Newtown, Kolkata – New Town, West Bengal 700136</p>
+        </div>
+      </div>
+      <div class="map-detail">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a0c4ff" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 01-2.2 2A19.8 19.8 0 013.1 5.2 2 2 0 015.1 3h3a2 2 0 012 1.7c.1 1 .4 2 .7 2.9a2 2 0 01-.5 2.1L9 11c1.8 3.1 4 5.3 7.1 7.1l1.3-1.3a2 2 0 012.1-.5c.9.3 1.9.6 2.9.7a2 2 0 011.7 2z"/></svg>
+        <div>
+          <strong>Phone</strong>
+          <p><a href="tel:+918660496425" style="color:rgba(255,255,255,0.75)">+91 86604 96425</a></p>
+        </div>
+      </div>
+      <div class="map-detail">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a0c4ff" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        <div>
+          <strong>Hours</strong>
+          <p>Open today · Closes 9:30 PM</p>
+        </div>
+      </div>
+      <a href="https://www.google.com/maps/place/Dr.+Abhinaba+Ghosh/@22.6287479,88.4457421,17z" target="_blank" class="btn-primary" style="margin-top: 0.5rem; text-align:center;">Get Directions</a>
+    </div>
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3682.1446743!2d88.4457421!3d22.6287479!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f89f737f44f4d7%3A0x6e781a84ee0dcac!2sDr.%20Abhinaba%20Ghosh!5e0!3m2!1sen!2sin!4v1716000000000!5m2!1sen!2sin"
+      allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+      style="border:0; width:100%; height:420px;">
+    </iframe>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Dr. Abhinaba Ghosh · Galaxy Medicine, Newtown, Kolkata &nbsp;|&nbsp; <a href="tel:+918660496425">086604 96425</a></p>
+</footer>
+
+<script>
+  document.getElementById('strip-date').valueAsDate = new Date();
+  document.getElementById('appt-date').valueAsDate = new Date();
+
+  function sendToWhatsApp() {
+    const name = document.getElementById('fname').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const date = document.getElementById('appt-date').value;
+    const time = document.getElementById('appt-time').value;
+    const reason = document.getElementById('reason').value;
+    const age = document.getElementById('age').value;
+    const notes = document.getElementById('notes').value.trim();
+
+    if (!name || !phone) {
+      alert('Please fill in your name and phone number.');
+      return;
+    }
+
+    const msg =
+      `Hello Dr. Abhinaba Ghosh, I would like to book an appointment.\n\n` +
+      `*Patient Name:* ${name}\n` +
+      `*Phone:* ${phone}\n` +
+      `*Age:* ${age || 'Not specified'}\n` +
+      `*Preferred Date:* ${date || 'Flexible'}\n` +
+      `*Preferred Time:* ${time || 'Any'}\n` +
+      `*Reason:* ${reason || 'General Consultation'}\n` +
+      `*Notes:* ${notes || 'None'}\n\n` +
+      `Please confirm my appointment. Thank you!`;
+
+    const waNumber = '916002306245';
+    const waURL = `https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`;
+    window.open(waURL, '_blank');
+  }
+</script>
+</body>
+</html>
